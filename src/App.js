@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import Header from './componenets/Header';
+import BeverageSearchForm from './componenets/BeverageSearchForm';
+import RecipeList from './componenets/RecipeList'
+
+import CategoriesProvider from './context/CategoriesContext'
+import RecipesProvider from './context/RecipesContext';
+import ModalProvider from './context/ModalContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CategoriesProvider>
+      <RecipesProvider>
+        <ModalProvider>
+          <div className="App">
+            <Header />
+            <div className="container mt-5">
+              <div className="row">
+                <BeverageSearchForm />
+                <RecipeList />
+              </div>
+            </div>
+          </div>
+        </ModalProvider>
+      </RecipesProvider>
+    </CategoriesProvider>
   );
 }
 
